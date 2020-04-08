@@ -50,7 +50,7 @@ function applyFilterByName() {
 }
 function searchCourseByName(nameKey, courses) {
     return nameKey === '' ? dataCourses : courses.filter(function (c) {
-        return c.name.toLowerCase().match(nameKey.toLowerCase());
+        return c.name.match(nameKey);
     });
 }
 function getTotalCredits(courses) {
@@ -66,18 +66,16 @@ function clearCoursesInTable() {
     }
 }
 function applyFilterByCredits() {
-    var max = inputSearchBoxCreditsH.valueAsNumber;
-    max = max ? max : 3;
-    var min = inputSearchBoxCredits.valueAsNumber;
-    min = min ? min : 1;
-    console.log(min);
-    console.log(max);
-    if (min > max)
-        alert('El rango no es valido. \nEl mínimo debe ser más grande que el máximo');
+    var low = inputSearchBoxCredits.valueAsNumber;
+    var high = inputSearchBoxCreditsH.valueAsNumber;
+    low = (low == null) ? 10 : low;
+    high = (high == null) ? 1 : high;
     clearCoursesInTable();
-    var coursesFiltered = searchCourseInCreditsRange(max, min, dataCourses);
+    var coursesFiltered = searchCourseInCreditsRange(low, high, dataCourses);
     renderCoursesInTable(coursesFiltered);
 }
-function searchCourseInCreditsRange(max, min, courses) {
-    return courses.filter(function (x) { return (x.credits >= min && x.credits <= max); });
+function searchCourseInCreditsRange(lower, high, courses) {
+    return lower > high ? dataCourses : courses.filter(function (c) {
+        return (c.credits >= lower && c.credits <= high);
+    });
 }

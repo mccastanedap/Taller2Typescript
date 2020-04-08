@@ -1,8 +1,8 @@
 var Course = /** @class */ (function () {
     function Course(name, professor, credits) {
         this.name = name;
-        this.professor = professor;
         this.credits = credits;
+        this.professor = professor;
     }
     return Course;
 }());

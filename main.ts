@@ -60,9 +60,6 @@ function renderStudentsInTable(students: Student[]): void {
         studentsTbody.appendChild(trElement5);
     });
 }
- 
-
- 
 
 function applyFilterByName() { 
   let text = inputSearchBox.value;
@@ -75,7 +72,7 @@ function applyFilterByName() {
 
 function searchCourseByName(nameKey: string, courses: Course[]) {
   return nameKey === '' ? dataCourses : courses.filter( c => 
-    c.name.match(nameKey));
+    c.name.toLowerCase().match(nameKey.toLowerCase()));
 }
 
 function getTotalCredits(courses: Course[]): number {
@@ -94,19 +91,25 @@ function clearCoursesInTable() {
 }
 
 function applyFilterByCredits(){
-    let low = inputSearchBoxCredits.valueAsNumber;
-    let high = inputSearchBoxCreditsH.valueAsNumber;
-    low = (low == null) ? 10 : low;
-    high = (high == null) ? 1 : high;
+    let max = inputSearchBoxCreditsH.valueAsNumber;
+    max = max ? max : 3;
+    let min = inputSearchBoxCredits.valueAsNumber;
+    min = min ? min : 1;
+
+    console.log(min);
+    console.log(max);
+
+    if(min > max) 
+    {
+      alert('El rango no es valido. \nEl mínimo debe ser más grande que el máximo');
+      return;
+    }
+
     clearCoursesInTable();
-    let coursesFiltered: Course[] =searchCourseInCreditsRange(low, high, dataCourses);
+    let coursesFiltered: Course[] = searchCourseInCreditsRange(max, min, dataCourses);
     renderCoursesInTable(coursesFiltered);
-    
 }
 
-function searchCourseInCreditsRange(lower: number, high: number, courses: Course[]) {
-
-   
-    return lower>high ? dataCourses : courses.filter( c => 
-        (c.credits>= lower && c.credits <=high));    
+function searchCourseInCreditsRange(max: number, min: number, courses: Course[]) {
+  return courses.filter( x => (x.credits>= min && x.credits <=max));
 }
