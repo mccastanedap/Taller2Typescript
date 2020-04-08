@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taller 1</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1 style="margin-left: 5%; padding: inherit;">Melissa Castañeda</h1>
+          <img
+            class="img-fluid max-width: 100% height: auto"
+            src="https://i.pinimg.com/236x/e4/1f/d6/e41fd696ad81472e28c8a93aa9467fd0--create-your-avatar-the-app.jpg"
+            alt="MiAvatar"
+          />
+          <div class="card">
+            <div class="card-body">
+              <table class="table">
+                <h2 style="margin-left: 20%; padding: inherit;">
+                  Datos personales
+                </h2>
+                <tbody id="student"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-header">
+                <h2 style="margin-left: 20%; padding: inherit;">
+                  Cursos Actuales
+                </h2>
+              </div>
+              <form style="margin: 10px;">
+                <div class="form-row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="search-box"
+                      placeholder="Filtrar por nombre"
+                    />
+                  </div>
+                  <div class="col">
+                    <button
+                      type="button"
+                      id="button-filterByName"
+                      class="btn btn-success"
+                    >
+                      Aplicar
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <form style="margin: 10px;">
+                <div class="form-row">
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="search-box-2"
+                      placeholder="max"
+                    />
+                  </div>
+                  <div class="col">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="search-box-2"
+                      placeholder="min"
+                    />
+                  </div>
+                  
+                  <div class="col">
+                    <button
+                      type="button"
+                      id="button-filterByCredits"
+                      class="btn btn-success"
+                    >
+                      Aplicar
+                    </button>
+                  </div>
+                </div>
+              </form>
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Curso</th>
+                    <th>Profesor</th>
+                    <th>Créditos</th>
+                  </tr>
+                </thead>
+                <tbody id="courses"></tbody>
+              </table>
+              <div class="row">
+                <div class="col">
+                  <h5 style="text-align: right;">Total créditos:</h5>
+                </div>
+                <div class="col">
+                  <h5 id="total-credits" style="text-align: left;"></h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./scripts/course.js"></script>
+    <script type="module" src="./scripts/dataCourses.js"></script>
+    <script type="module" src="./scripts/student.js"></script>
+    <script type="module" src="./scripts/dataStudent.js"></script>
+    <script type="module" src="./scripts/main.js"></script>
+  </body>
+</html>
